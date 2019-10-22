@@ -7,16 +7,16 @@
     </head>
     <body>
         <div class="signin">
-            <form>
+            <form action="registration.php" method="post">
                 <h2 style="color: white">Log In</h2>
                 <input type ="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="Password"><br><br>
+                <input type="password" name="pass" placeholder="Password"><br><br>
                 <a href=""><input type="button" value="Log In"></a><br>
                 <br>
                 <div id="container">
                     <a href="#" style=" margin-right:0px; font-size: 13px; font-family:Tahoma, Geneva, sans-serif;">Forgot Password</a>
                 </div><br><br><br><br>
-                Don't have an account?<a href="#">&nbsp;Sign Up</a>
+                Don't have an account?<a href="register.php">&nbsp;Sign Up</a>
 
             </form>
         </div>
