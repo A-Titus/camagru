@@ -11,51 +11,54 @@ session_start();
 
     if ($_POST['submit'])
     {
-        $username = mysqli_real_escape_string($con,$_POST['r_username']);
-        mysqli_query($con, "INSERT INTO users_data (username) VALUES ('$username')");
-        exit();
+        //username = mysqli_real_escape_string($con,$_POST['r_username']);
+        $username = validate($_POST['r_username']);
+        $email = mysqli_real_escape_string($con, $_POST['r_email']);
+        $pass = mysqli_real_escape_string($con, $_POST['r_pass']);
+
+        
+        
+        
+        //add form validation
+        
+        //check for existing users
+        
+        $user_check = "SELECT * FROM users_data WHERE username = `$username`";
+        $results = mysqli_query($con, $user_check);
+        //$user = mysqli_fetch_assoc($result);
+        
+        if(mysqli_num_rows($results) > 0)
+        {
+            echo"name already exists";
+            header("Location: registration.php?registration=userExist");
+            exit();
+        }
+        else
+        {
+            mysqli_query($con, "INSERT INTO users_data (username, email, user_password) VALUES ('$username', '$email', '$pass')");
+            echo"success";
+        }
+        // if ($resultsCheck >= 1)
+        // {
+        //     echo "username exists";
+        // }
+        // else
+        // {
+        //     echo " added to db";
+        //     exit();
+            
+        // }
+
+
+        function validate($string)
+        {
+            $string = strip_tags($string);
+            $string = strtolower($string);
+            $string = preg_replace('/\s+/', '', $string);
+            $string = ucfirst($string);
+
+            return ($string);
+        }
+        
     }
-
-  if ($_POST['submit'])
-  {
-      
-      
-      $email = mysqli_real_escape_string($con, $_POST['r_email']);
-      $pass = mysqli_real_escape_string($con, $_POST['r_pass']);
-
-    
-    //add form validation
-
-    //check for existing users
-
-    $user_check = "SELECT * FROM users_data WHERE username = `$username` or email = `$email` LIMIT 1";
-    $results = mysqli_query($con, $user_check);
-    //$user = mysqli_fetch_assoc($result);
-
-    $resultsCheck = mysqli_num_rows($results);
-    if ($resultsCheck > 0)
-    {
-        header("Location: registration.php?registration=userExist");
-        exit();
-    }
-    else
-    {
-       
-    }
-
-    /*if($user)
-    {
-        if($user['username'] === $username){array_push($errors, "username already exists");}
-        if($user['email'] === $email){array_push($errors, "This email is already in use");}
-    }
-    if(count($errors) == 0)
-    {
-        //protect pssword before adding to database
-        $query = "INSERT INTO users_data (username, email, user_password) VALUES (`gdfgfdgdf`, `$email`, `$pass`)";
-        mysqli_query($con, $query);
-        $_SESSION['username'] = $username;
-        $_SESSION['success'] = "you are now logged in";
-    }*/
-}
-
 ?>
