@@ -7,7 +7,7 @@
     
     $create_table= "CREATE TABLE users_data ( id int primary key,
     username varchar(255),
-    email varchar(255)'
+    email varchar(255),
     user_password varchar(255))";
     mysqli_query($con, $create_table);
     mysqli_close($con);

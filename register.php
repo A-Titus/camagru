@@ -7,14 +7,16 @@
     </head>
     <body>
         <div class="signin">
-            <form action="registration.php" method="post">
+
+            <form action="registration.php" method="POST">
                 <h2 style="color: white">Register</h2>
-                <input type ="text" name="username" placeholder="Username">
-                <input type ="text" name="email" placeholder="email">
-                <input type="password" name="pass" placeholder="Password"><br><br>
-                <button type="submit">Register</button>
+                <input type ="text" name="r_username" placeholder="Username">
+                <input type ="text" name="r_email" placeholder="email">
+                <input type="password" name="r_pass" placeholder="Password"><br><br>
+                <input type="submit" name="submit" placeholder="register">
                 <br>
             </form>
+
         </div>
     </body>
 </html>
