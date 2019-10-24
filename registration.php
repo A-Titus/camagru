@@ -7,51 +7,35 @@
 
     include_once 'connect.php';
 
-
-    if ($_POST['submit'])
+    if(isset($_POST['submit']))
     {
-        $username = mysqli_real_escape_string($con,$_POST['r_username']);
-        $email = mysqli_real_escape_string($con,$_POST['r_email']);
-        $pass1 = mysqli_real_escape_string($con,$_POST['r_pass']);
-        $pass2 = mysqli_real_escape_string($con, $_POST['r_pass_conf']);
-        
-        //add form validation
-
-        if (empty($username)) { echo  "Username is required"; }
-        if (empty($email)) { echo  "Email is required"; }
-        if (empty($pass1)) { echo "Password is required"; }
-        if ($pass1 != $pass2) {
-        echo "The two passwords do not match";}
-        
-
-        
-        //check for existing users
+        $username = $_POST['r_username'];
+        $email = $_POST['r_email'];
+        $pass1 = $_POST['r_pass'];
+        $pass2 = $_POST['r_pass_conf'];
 
 
-            $user_check_query = "SELECT * FROM users_data WHERE username='$username' OR email='$email' LIMIT 1";
-            $result = mysqli_query($con, $user_check_query);
-            $user = mysqli_fetch_assoc($result);
-            
-            if ($user) { // if user exists
-                if ($user['username'] === $username || $user['email'] === $email)
-                {
-                    echo " User already exists";
-                    exit();
-                }
-            }
-            mysqli_query($con, "INSERT INTO users_data (username, email, user_password) VALUES ('$username', '$email', '$pass1')");
-            echo"success";
-        //////////////////////////
-
-        // function validate($string)
-        // {
-        //     $string = strip_tags($string);
-        //     $string = strtolower($string);
-        //     $string = preg_replace('/\s+/', '', $string);
-        //     $string = ucfirst($string);
-
-        //     return ($string);
-        // }
-        
+       if(empty($username)  || empty($email) || empty($pass1) || empty($pass2))
+       {
+           echo "<div class='error_message'>Fields missing</div>";
+       }
+       else
+       {
+           
+           $statement = $conn->prepare("SELECT * FROM users_data WHERE username = '$username' OR email = '$email'");
+           $statement->execute();
+               $count = $statement->rowCount();
+               if($count > 0)
+               {
+                   echo "<div class='error_message'>username or email already in use</div>";
+                   exit();
+               }
+               else
+               {
+                $query = $conn->prepare("INSERT INTO users_data (username, email, user_password) VALUES ('$username', '$email', '$pass1')");
+                $query->execute();
+                echo "<div class='success_message'>success</div>";
+               }
+       }
     }
 ?>

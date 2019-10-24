@@ -67,7 +67,26 @@ input[type=button]
     cursor: pointer;
 }
 
+input[type=submit]
+{
+    border: none;
+    width: 190px;
+    background: white;
+    color: #000;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
 input[type=button]:hover
+{
+    color: #fff;
+    background-color: black;
+}
+
+input[type=submit]:hover
 {
     color: #fff;
     background-color: black;
@@ -101,4 +120,16 @@ a:hover
 {
     color: aliceblue;
     opacity: 0.8;
+}
+
+.error_message {
+    text-align: center;
+    padding: 10px;
+    background-color: #ff333382;
+}
+
+.success_message {
+    text-align: center;
+    padding: 10px;
+    background-color: #96ff3382;
 }
