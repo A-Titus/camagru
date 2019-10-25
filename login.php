@@ -7,11 +7,11 @@
     </head>
     <body>
         <div class="signin">
-            <form action="registration.php" method="post">
+            <form action="login_check.php" method="POST">
                 <h2 style="color: white">Log In</h2>
                 <input type ="text" name="username" placeholder="Username">
                 <input type="password" name="pass" placeholder="Password"><br><br>
-                <a href=""><input type="button" value="Log In"></a><br>
+                <input type="submit" name="login" placeholder="Login">
                 <br>
                 <div id="container">
                     <a href="#" style=" margin-right:0px; font-size: 13px; font-family:Tahoma, Geneva, sans-serif;">Forgot Password</a>

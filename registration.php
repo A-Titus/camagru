@@ -14,6 +14,12 @@
         $pass1 = $_POST['r_pass'];
         $pass2 = $_POST['r_pass_conf'];
 
+        if($pass1 != $pass2)
+        {
+            echo "<div class='error_message'>Passwords dont match</div>";
+            exit();
+        }
+
 
        if(empty($username)  || empty($email) || empty($pass1) || empty($pass2))
        {
@@ -32,7 +38,8 @@
                }
                else
                {
-                $query = $conn->prepare("INSERT INTO users_data (username, email, user_password) VALUES ('$username', '$email', '$pass1')");
+                $hashed_pass = password_hash($pass1, PASSWORD_BCRYPT);
+                $query = $conn->prepare("INSERT INTO users_data (username, email, user_password) VALUES ('$username', '$email', '$hashed_pass')");
                 $query->execute();
                 echo "<div class='success_message'>success</div>";
                }
