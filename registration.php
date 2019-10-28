@@ -40,6 +40,19 @@
                 $query = $conn->prepare("INSERT INTO users (username, email, user_password) VALUES ('$username', '$email', '$hashed_pass')");
                 $query->execute();
                 echo "<div class='success_message'>success</div>";
+
+
+                $msg = "my message";
+
+                // send email
+                $headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                // More headers
+                $headers .= 'From: <abdussamadtitus@gmail.com>' . "\r\n";
+                $headers .= 'Cc: myboss@example.com' . "\r\n";
+
+                mail($email,"my subject",$msg,$headers);
                }
        }
     }
