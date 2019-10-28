@@ -1,8 +1,5 @@
 <?php
     session_start();
-
-
-    include("install.php");
     include("login.php");
 
     include_once 'connect.php';
@@ -19,7 +16,7 @@
        }
        else
        {
-            $stmt = $conn->prepare("SELECT * FROM users_data WHERE username = '$username'");
+            $stmt = $conn->prepare("SELECT * FROM users WHERE username = '$username'");
             $stmt->execute();
             $result = $stmt->fetch();
             if ($result) 

@@ -1,38 +1,30 @@
 <?php
+    $servername="localhost"; 
+    $root="root"; 
+    $password="pass123"; 
+    $db = "camagru";
+        try {
+            $conn = new PDO("mysql:host=$servername", $root, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn->exec("CREATE DATABASE `$db`;");
+        } catch (PDOException $e) {
+            die("DB ERROR: ". $e->getMessage());
+        }
+    $conn = NULL;
 
-    $conn = mysqli_connect('localhost', 'root', 'pass123');
-	$create ="CREATE DATABASE users";
-    mysqli_query($conn, $create);
-
-    mysqli_select_db($conn, 'users');
-    
-    $create_table= "CREATE TABLE users_data ( id int primary key AUTO_INCREMENT,
-    username varchar(255),
-    email varchar(255),
-    user_password varchar(255))";
-    mysqli_query($conn, $create_table);
-    mysqli_close($conn);
-
-
-// $host="localhost"; 
-
-// $root="root"; 
-// $password="pass123"; 
-
-
-//     try {
-//         $conn = new PDO("mysql:host=$host", $root, $password);
-
-//         $conn->exec("CREATE DATABASE `users`");
-
-//         $query = $conn->prepare("CREATE TABLE users.users_data ( id int primary key AUTO_INCREMENT,
-//         username varchar(255),
-//         email varchar(255),
-//         user_password varchar(255))");
-//         $query->exec()
-//         or die(print_r($conn->errorInfo(), true));
-
-//     } catch (PDOException $e) {
-//         die("DB ERROR: ". $e->getMessage());
-//     }
-?>
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=camagru", $root, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "connected successfully";
+    }
+    catch(PDOException $e)
+    {
+        echo "connection error: " . $e;
+    }
+    $sql = "CREATE TABLE $db.users (
+        id INT(6) AUTO_INCREMENT PRIMARY KEY,
+        username varchar(100),
+        email varchar(100),
+        user_password varchar(100))";
+    $conn->exec($sql);
+    ?>

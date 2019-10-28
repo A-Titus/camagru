@@ -1,8 +1,6 @@
 <?php
     session_start();
 
-
-    include("install.php");
     include("register.php");
 
     include_once 'connect.php';
@@ -28,7 +26,7 @@
        else
        {
            
-           $statement = $conn->prepare("SELECT * FROM users_data WHERE username = '$username' OR email = '$email'");
+           $statement = $conn->prepare("SELECT * FROM users WHERE username = '$username' OR email = '$email'");
            $statement->execute();
                $count = $statement->rowCount();
                if($count > 0)
@@ -39,7 +37,7 @@
                else
                {
                 $hashed_pass = password_hash($pass1, PASSWORD_BCRYPT);
-                $query = $conn->prepare("INSERT INTO users_data (username, email, user_password) VALUES ('$username', '$email', '$hashed_pass')");
+                $query = $conn->prepare("INSERT INTO users (username, email, user_password) VALUES ('$username', '$email', '$hashed_pass')");
                 $query->execute();
                 echo "<div class='success_message'>success</div>";
                }
