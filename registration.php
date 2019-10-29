@@ -28,6 +28,7 @@
            
            $statement = $conn->prepare("SELECT * FROM users WHERE username = '$username' OR email = '$email'");
            $statement->execute();
+            //$verif = $statement->fetchAll();
                $count = $statement->rowCount();
                if($count > 0)
                {
@@ -37,7 +38,7 @@
                else
                {
                     $hashed_pass = password_hash($pass1, PASSWORD_BCRYPT);
-                    $query = $conn->prepare("INSERT INTO users (username, email, user_password) VALUES ('$username', '$email', '$hashed_pass')");
+                    $query = $conn->prepare("INSERT INTO users (username, email, user_password, verified) VALUES ('$username', '$email', '$hashed_pass', '0')");
                     $query->execute();
                     echo "<div class='success_message'>success</div>";
 
@@ -45,10 +46,7 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 $to = $email;
                 $subject = "Your password";
-                $message = "<p>Hello Homer,</p>
-                <p>Thanks for registering.</p>
-                <p>Your password is: <b>springfield</b></p>
-                ";
+                $message = "<a href=\'https://www.google.com\'>Click Here</a>";
                 $from = "abdussamadtitus@gmail.com";
                 $headers = "MIME-Version: 1.0" . "\n";
                 $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
@@ -58,7 +56,7 @@
                 mail($to,$subject,$message,$headers);
 
                 // Inform the user
-                echo "Thanks for registering! We have just sent you an email with your password.";
+                echo "Thanks for registering! We have just sent you an email with your verification link.";
                 }
         }
     }

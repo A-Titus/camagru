@@ -25,6 +25,8 @@
         id INT(6) AUTO_INCREMENT PRIMARY KEY,
         username varchar(100),
         email varchar(100),
-        user_password varchar(100))";
+        user_password varchar(100),
+        verified boolean,
+        verification_key int(4))";
     $conn->exec($sql);
     ?>
