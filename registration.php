@@ -36,25 +36,30 @@
                }
                else
                {
-                $hashed_pass = password_hash($pass1, PASSWORD_BCRYPT);
-                $query = $conn->prepare("INSERT INTO users (username, email, user_password) VALUES ('$username', '$email', '$hashed_pass')");
-                $query->execute();
-                echo "<div class='success_message'>success</div>";
+                    $hashed_pass = password_hash($pass1, PASSWORD_BCRYPT);
+                    $query = $conn->prepare("INSERT INTO users (username, email, user_password) VALUES ('$username', '$email', '$hashed_pass')");
+                    $query->execute();
+                    echo "<div class='success_message'>success</div>";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                $msg = "my message";
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                $to = $email;
+                $subject = "Your password";
+                $message = "<p>Hello Homer,</p>
+                <p>Thanks for registering.</p>
+                <p>Your password is: <b>springfield</b></p>
+                ";
+                $from = "abdussamadtitus@gmail.com";
+                $headers = "MIME-Version: 1.0" . "\n";
+                $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
+                $headers .= "From: $from" . "\n";
 
-                // send email
-                $headers = "MIME-Version: 1.0" . "\r\n";
-                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                // Send email
+                mail($to,$subject,$message,$headers);
 
-                // More headers
-                $headers .= 'From: <abdussamadtitus@gmail.com>' . "\r\n";
-                $headers .= 'Cc: myboss@example.com' . "\r\n";
-
-                mail($email,"my subject",$msg,$headers);
-               }
-       }
+                // Inform the user
+                echo "Thanks for registering! We have just sent you an email with your password.";
+                }
+        }
     }
 ?>
