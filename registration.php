@@ -38,25 +38,28 @@
                else
                {
                     $hashed_pass = password_hash($pass1, PASSWORD_BCRYPT);
-                    $query = $conn->prepare("INSERT INTO users (username, email, user_password, verified) VALUES ('$username', '$email', '$hashed_pass', '0')");
+                    $otp = rand(10000, 99000);
+                    $query = $conn->prepare("INSERT INTO users (username, email, user_password, verified, otp) VALUES ('$username', '$email', '$hashed_pass', '0', $otp)");
                     $query->execute();
                     echo "<div class='success_message'>success</div>";
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 $to = $email;
-                $subject = "Your password";
-                $message = "<a href=\'https://www.google.com\'>Click Here</a>";
+                $subject = "Verify Email";
+                $message = "Thank you for registering, Please go to the link provided and enter the otp you see below
+                <p>Your OTP: $otp</p> 
+                <p>http://localhost:8080/camagru/otp.php</p>
+                </br>";
                 $from = "abdussamadtitus@gmail.com";
                 $headers = "MIME-Version: 1.0" . "\n";
                 $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
                 $headers .= "From: $from" . "\n";
 
-                // Send email
                 mail($to,$subject,$message,$headers);
 
-                // Inform the user
                 echo "Thanks for registering! We have just sent you an email with your verification link.";
+                header("Location: http://localhost:8080/camagru/otp.php");
                 }
         }
     }

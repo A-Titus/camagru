@@ -22,13 +22,19 @@
             if ($result) 
             {
                 $hash = $result['user_password'];
-            
-                if (password_verify($pass, $hash)) { 
-                    echo  "<div class='success_message'>Login success</div>";
-                }
-                else 
+                if ($result['verified'] == 1)
                 {
-                    echo "<div class='error_message'>Invalid password</div>";
+                    if (password_verify($pass, $hash)) { 
+                        echo  "<div class='success_message'>Login success</div>";
+                    }
+                    else 
+                    {
+                        echo "<div class='error_message'>Invalid password</div>";
+                    }
+                }
+                else
+                {
+                    echo "<div class='error_message'>Your account is not yet verified</div>";
                 }
             }
             else

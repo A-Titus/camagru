@@ -27,6 +27,6 @@
         email varchar(100),
         user_password varchar(100),
         verified boolean,
-        verification_key int(4))";
+        otp int(5))";
     $conn->exec($sql);
     ?>
