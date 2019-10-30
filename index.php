@@ -14,7 +14,7 @@
                 <input type="submit" name="login" placeholder="Login">
                 <br>
                 <div id="container">
-                    <a href="#" style=" margin-right:0px; font-size: 13px; font-family:Tahoma, Geneva, sans-serif;">Forgot Password</a>
+                    <a href="http://localhost:8080/camagru/forgot_password.php" style=" margin-right:0px; font-size: 13px; font-family:Tahoma, Geneva, sans-serif;">Forgot Password</a>
                 </div><br><br><br><br>
                 Don't have an account?<a href="register.php">&nbsp;Sign Up</a>
 

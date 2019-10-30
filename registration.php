@@ -47,10 +47,10 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 $to = $email;
                 $subject = "Verify Email";
-                $message = "Thank you for registering, Please go to the link provided and enter the otp you see below
-                <p>Your OTP: $otp</p> 
-                <p>http://localhost:8080/camagru/otp.php</p>
-                </br>";
+                $message = "<h1><a href ='http://localhost:8080/camagru/otp.php?link=$otp'>click here</a></h1>
+                <p></br></br></br></p>
+                <p>Your otp: $otp</p></br>
+                <p>link: 'http://localhost:8080/camagru/otp.php?link=$otp'</p>";
                 $from = "abdussamadtitus@gmail.com";
                 $headers = "MIME-Version: 1.0" . "\n";
                 $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";

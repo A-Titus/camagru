@@ -19,9 +19,9 @@
                 $result = $stmt->fetch();
                 if ($result) 
                 {
-                    $query =$conn->prepare("UPDATE users SET verified = '1'");
+                    $query =$conn->prepare("UPDATE users SET verified = '1' WHERE otp = $otp_verify");
                     $query->execute();
-                    header("Location: http://localhost:8080/camagru/login.php");
+                    header("Location: http://localhost:8080/camagru/index.php");
                 }
                 else
                 {
