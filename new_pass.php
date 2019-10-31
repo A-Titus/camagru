@@ -7,10 +7,10 @@
     </head>
     <body>
         <div class="signin">
-            <form action="verify.php" method="POST">
+            <form action="new.php" method="POST">
                 <h2 style="color: white">Reset Password</h2>
-                <input type ="email" name="conf_email" placeholder="Please enter your email">
-                <input type="submit" name="send" placeholder="send link">
+                <input type ="password" name="new_pass" placeholder="Please enter your new password">
+                <input type="submit" name="change" placeholder="send link">
                 <br>
             </form>
         </div>
