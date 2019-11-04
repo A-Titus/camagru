@@ -1,10 +1,10 @@
 <?php
         session_start();
-        include("otp.php");
+        include("passotp.php");
     
         include_once 'connect.php';
     
-        if(isset($_POST['verify']))
+        if(isset($_POST['passotp']))
         {
             $otp_verify = $_POST['otp'];
     
@@ -19,6 +19,7 @@
                     $query->execute();
                     //header("Location: http://localhost:8080/camagru/index.php");
                     echo "<div class='success_message'>your account was sucessfully verified</div>";
+                    header("Location: http://localhost:8080/camagru/newpass.php");
                 }
                 else
                 {
@@ -26,4 +27,5 @@
                 }
         }
     
-?>
+
+?>       

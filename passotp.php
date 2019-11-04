@@ -7,13 +7,13 @@
     </head>
     <body>
         <div class="signin">
-            <form action="verify.php" method="POST">
+            <form action="forgotVerify.php" method="POST">
                 <h2 style="color: white">Verify</h2>
                 <input type ="text" name="otp" placeholder="Please enter your otp">
-                <input type="submit" name="verify" placeholder="verify">
-                <br><br><br><br><br>
-                <a href="index.php">&nbsp;Login In</a>
+                <input type="submit" name="passotp" placeholder="verify">
+                <br>
             </form>
         </div>
     </body>
 </html>
+
