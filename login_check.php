@@ -27,6 +27,7 @@
                     if (password_verify($pass, $hash)) { 
                         echo  "<div class='success_message'>Login success</div>";
                         $_SESSION['username'] = $username;
+                        $_SESSION['email'] = $email;
                         header("Location: http://localhost:8080/camagru/feed.php");
 
                     }
