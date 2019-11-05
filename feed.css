@@ -1,8 +1,8 @@
 div.gallery {
     margin: 5px;
-    border: 1px solid rgb(245, 245, 245);
     float: left;
     width: 180px;
+    
   }
   
   div.gallery:hover {
@@ -14,12 +14,49 @@ div.gallery {
     height: auto;
   }
   
-  div.desc {
-    padding: 15px;
-    text-align: center;
-  }
-  .gal
+  body
   {
-      border: 1px solid red;
-      
+      font-family: Tahoma, Geneva, sans-serif;
+      color: #fff;
+      background-image: url("https://images.unsplash.com/photo-1485431618850-e6592fd4b298?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+      background-size: cover;
+      background-repeat: no-repeat;
+      text-align: center;
   }
+
+  #snap
+  {
+    border: none;
+    width: 190px;
+    background: white;
+    color: #000;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+.topnav {
+  overflow: hidden;
+  background: rgba(44,62,80,0.7);
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: rgb(64, 169, 218);
+  color: white;
+}

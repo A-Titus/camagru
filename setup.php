@@ -29,4 +29,11 @@
         verified boolean,
         otp int(5))";
     $conn->exec($sql);
+
+    $sql = "CREATE TABLE `images` (
+        `id` int(6) AUTO_INCREMENT PRIMARY KEY,
+        `name` varchar(255) NOT NULL,
+        `path` text NOT NULL
+      )";
+      $conn->exec($sql);
     ?>
