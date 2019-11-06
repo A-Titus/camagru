@@ -9,7 +9,6 @@
         $username = $_POST['username'];
         $pass = $_POST['pass'];
 
-
        if(empty($username) || empty($pass))
        {
            echo "<div class='error_message'>Fields missing</div>";
@@ -27,7 +26,6 @@
                     if (password_verify($pass, $hash)) { 
                         echo  "<div class='success_message'>Login success</div>";
                         $_SESSION['username'] = $username;
-                        $_SESSION['email'] = $email;
                         header("Location: http://localhost:8080/camagru/feed.php");
 
                     }
