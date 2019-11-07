@@ -26,6 +26,19 @@
                 document.getElementById("snap").addEventListener("click", function()
                 {
                     context.drawImage(video, 0, 0, 640, 480);
+                //     var myImg = document.getElementById(video).src;
+                //     //var image = canvas.toDataURL("image/jpg");
+                //    //document.write(myImg);
+                //   
+                //     $data = myImg;
+
+                //     list($type, $data) = explode(';', $data);
+                //     list(, $data) = explode(',', $data);
+                //     $data = base64_decode($data);
+                    
+                //     file_put_contents('path_to_your_directory/tmp/image.png', $data);
+                //    
+                    
                 });
             </script>
         </body>

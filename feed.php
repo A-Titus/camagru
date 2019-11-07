@@ -11,7 +11,7 @@
   <a class="active" href="#">Feed</a>
   <a href="camera.php">Snap</a>
   <a href="update/profile.php">Profile</a>
-  <a href="#">Log out</a>
+  <a href="logout.php">Log out</a>
 </div>
 
 <div class="gallery">
