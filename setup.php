@@ -30,10 +30,12 @@
         otp int(5))";
     $conn->exec($sql);
 
-    $sql = "CREATE TABLE `images` (
-        `id` int(6) AUTO_INCREMENT PRIMARY KEY,
-        `name` varchar(255) NOT NULL,
-        `path` text NOT NULL
-      )";
-      $conn->exec($sql);
+    $sql = $conn->prepare("CREATE TABLE IF NOT EXISTS `images` (
+        `img_id` int(11) NOT NULL,
+          `img_name` varchar(255) NOT NULL,
+          `img_path` varchar(255) NOT NULL,
+          `img_type` varchar(255) NOT NULL,
+          `img_title` varchar(255) NOT NULL
+        )");
+        $sql->execute();
     ?>
