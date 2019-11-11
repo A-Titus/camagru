@@ -2,13 +2,21 @@
     <head>
         <title>camera test</title>
         <link rel="stylesheet" href="feed.css">
+        <h1>Camagru</h1>
         <body>
-        <div class ="camera">
-            <video id="video" width="640" height="480" autoplay></video>
-            <button id="snap">Snap Photo</button>
-            <canvas id="canvas" width="640" height="480"></canvas>
-        </div>
-            <script>
+            <div class="topnav">
+                <a href="feed.php">Feed</a>
+                <a class="active" href="#">Snap</a>
+                <a href="upload.php">upload</a>
+                <a href="update/profile.php">Profile</a>
+                <a href="logout.php">Log out</a>
+            </div>
+           <p> <video id="video" width="640" height="480" autoplay></video></p>
+            <p> <button id="snap">Snap Photo</button></p>
+           <p> <canvas id="canvas" width="640" height="480"></canvas></p>
+            
+            <div class="cam">
+                <script>
                 var video = document.getElementById('video');
                 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
                 {
@@ -26,21 +34,17 @@
                 document.getElementById("snap").addEventListener("click", function()
                 {
                     context.drawImage(video, 0, 0, 640, 480);
-                //     var myImg = document.getElementById(video).src;
-                //     //var image = canvas.toDataURL("image/jpg");
-                //    //document.write(myImg);
-                //   
-                //     $data = myImg;
+                    const a = document.createElement("a");
 
-                //     list($type, $data) = explode(';', $data);
-                //     list(, $data) = explode(',', $data);
-                //     $data = base64_decode($data);
-                    
-                //     file_put_contents('path_to_your_directory/tmp/image.png', $data);
-                //    
+                    document.body.appendChild(a);
+                    a.href = canvas.toDataURL();
+                    a.download = "image.png";
+                    a.click(); //auto click virtual link when snap button is clicked
+                    document.body.removeChild(a);//delete link
                     
                 });
             </script>
+            </div>
         </body>
     </head>
 </html>

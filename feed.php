@@ -4,13 +4,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>feed</title>
 <link rel="stylesheet" href="feed.css">
+<h1>Camagru</h1>
 </head>
 <body>
 
 <div class="topnav">
   <a class="active" href="#">Feed</a>
   <a href="camera.php">Snap</a>
-  <a href="update/profile.php">Profile</a>
+  <a href="upload.php">Upload</a>
+  <a href="./update/profile.php">Profile</a>
   <a href="logout.php">Log out</a>
 </div>
 

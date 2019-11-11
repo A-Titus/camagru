@@ -1,45 +1,57 @@
+<?php
+include_once 'config/database.php';
+if (isset($_POST['submit']))
+{
+   session_start();
+   $username = $_SESSION['username'];
+   $file = $_FILES['file'];
+   $fileName = $_FILES['file']['name'];
+   $fileTmpName = $_FILES['file']['tmp_name'];
+   $fileSize = $_FILES['file']['size'];
+   $fileError = $_FILES['file']['error'];
+   $fileType = $_FILES['file']['type'];
+   $filter = explode('.', $fileName);
+   $fileActualExt = strtolower(end($filter));
+   $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+   if (in_array($fileActualExt, $allowed))
+   {
+       if ($fileError ===0)
+       {
+           if ($fileSize < 1000000)
+           {
+               $_SESSION["email"]= $email;
+               $fileNameNew = uniqid('', true).".".$fileActualExt;
+               $fileDestination = 'img/'.$fileNameNew;
+               move_uploaded_file($fileTmpName, $fileDestination);
+               $check = "INSERT INTO images (username, image_name) VALUES('$username','$fileName')";
+               $sql = $conn->prepare($check);
+               $sql->execute();
+               //header("Location: http://127.0.0.1:8080/camagru/profile.php");
+           }
+           else
+           {
+               echo "your file is too big!";
+           }
+       }
+       else
+       {
+           echo "There was an error uploading your file!";
+       }
+   }
+   else
+   {
+       echo "you cannot upload files of this type";
+   }
+}
+?>
 <!DOCTYPE html>
-
-<html lang="en">
+<html>
    <head>
-      <meta charset="UTF-8">
-      <title>camagru</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     
+       <title>Upload</title>
    </head>
    <body>
-            <a href="upload-photo.php" data-reveal-id="uploadModal" data-reveal-ajax="true">Add Photo</a>
-      <br/>
-      <!--Content goes here-->
-      <div class="row">
-         
-            <?php
-      if(isset($_GET['success']))
-      {
-         if($_GET['success']=="yes")
-         {?>
-            Image "<?= $_GET['title']; ?>" uploaded successfully.
-               <a href="#" class="close">&times;</a>
-   <?php }
-         else 
-         {?>
-            "success";
-   <?php }
-      }?>
-      <ul>
-         <?php
-         require 'connect.php';
-         $stmt = $conn->query("SELECT * FROM images ORDER by img_id ASC");
-         //prepare
-         foreach ($stmt as $img) {
-         ?>
-         <li>
-            <a href="<?= $img['img_path']; ?>">
-            <img data-caption="<?= $img['img_title']; ?>" src="<?= $img['img_path']; ?>"></a>
-         </li>
-         <?php } ?>
-      </ul>
-        
-               </div>
+       <form action = "upload.php" method="POST" enctype="multipart/form-data">
+           <input type="file" name="file">
+           <button type="submit" name="submit">UPLOAD</button>
    </body>
 </html>

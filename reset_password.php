@@ -2,7 +2,7 @@
     session_start();
     include ("sendmail.php");
     include ("forgot_password.php");
-    include_once 'connect.php';
+    include_once './config/database.php';
 
     if(isset($_POST['send_link']))
     {

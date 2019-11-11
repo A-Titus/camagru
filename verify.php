@@ -2,7 +2,7 @@
         session_start();
         include("otp.php");
     
-        include_once 'connect.php';
+        include_once './config/database.php';
     
         if(isset($_POST['verify']))
         {
@@ -18,7 +18,7 @@
                     $query =$conn->prepare("UPDATE users SET verified = '1' WHERE otp = $otp_verify");
                     $query->execute();
                     //header("Location: http://localhost:8080/camagru/index.php");
-                    echo "<div class='success_message'>your account was sucessfully verified</div>";
+                    echo "<div class='success_message'>Your account was sucessfully verified <br> You may now login</div>";
                 }
                 else
                 {

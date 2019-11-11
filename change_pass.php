@@ -2,7 +2,7 @@
     session_start();
     include ("newpass.php");
 
-    include_once 'connect.php';
+    include_once './config/database.php';
    // echo "vwkemvklfmvdflmsvm;clc;anwid;nvefonvaenvfj;anv;jsnfd;nalsdvn;asjdjkfaks;dfjfakdjlsfa";
 
     if(isset($_POST['change']))

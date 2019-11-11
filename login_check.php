@@ -2,7 +2,7 @@
     session_start();
     include("index.php");
 
-    include_once 'connect.php';
+    include_once './config/database.php';
 
     if(isset($_POST['login']))
     {

@@ -4,7 +4,7 @@
     include("register.php");
     include("sendmail.php");
 
-    include_once 'connect.php';
+    include_once './config/database.php';
 
     if(isset($_POST['submit']))
     {

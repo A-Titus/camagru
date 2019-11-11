@@ -3,10 +3,9 @@
 
     include ("profile.php");
     
-    include_once "../connect.php";
+    include_once "../config/database.php";
     //echo $_SESSION['username'];
 
-    
     $old_username = $_SESSION['username'];
     if(isset($_POST['update_username']))
     {

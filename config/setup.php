@@ -31,11 +31,11 @@
     $conn->exec($sql);
 
     $sql = $conn->prepare("CREATE TABLE IF NOT EXISTS `images` (
-        `img_id` int(11) NOT NULL,
-          `img_name` varchar(255) NOT NULL,
-          `img_path` varchar(255) NOT NULL,
-          `img_type` varchar(255) NOT NULL,
-          `img_title` varchar(255) NOT NULL
+        `img_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+          `image_name` varchar(255) NOT NULL,
+          `username` varchar(255) NOT NULL
         )");
+        //add column for image path
+        //base64 encode
         $sql->execute();
     ?>
