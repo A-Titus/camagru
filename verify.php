@@ -9,6 +9,7 @@
             $otp_verify = $_POST['otp'];
     
                 //check for empty otp//
+            try{
                 
                 $stmt = $conn->prepare("SELECT * FROM users WHERE otp = '$otp_verify'");
                 $stmt->execute();
@@ -24,6 +25,11 @@
                 {
                     echo "<div class='error_message'>Incorrect otp</div>";
                 }
+            }
+            catch(PDOException $e)
+            {
+                echo "ERROR: " . $e->getMessage();
+            }
         }
     
 ?>

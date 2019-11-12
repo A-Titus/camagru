@@ -1,6 +1,14 @@
+<?PHP
+    session_start();
+    if(!isset($_SESSION['success']))
+    {
+        header("Location: http://localhost:8080/camagru/index.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>feed</title>
 <link rel="stylesheet" href="feed.css">

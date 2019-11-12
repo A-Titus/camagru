@@ -12,7 +12,7 @@
         $email = $_POST['r_email'];
         $pass1 = $_POST['r_pass'];
         $pass2 = $_POST['r_pass_conf'];
-
+        try{
         if($pass1 != $pass2)
         {
             echo "<div class='error_message'>Passwords dont match</div>";
@@ -50,5 +50,10 @@
                 
 
         }
+    }
+    catch(PDOException $e)
+    {
+        echo "ERROR: " . $e->getMessage();
+    }
     }
 ?>

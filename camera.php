@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['success']))
+    {
+        header("Location: http://localhost:8080/camagru/index.php");
+    }
+    ?>
+
 <html>
     <head>
         <title>camera test</title>

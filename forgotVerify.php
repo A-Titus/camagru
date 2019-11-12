@@ -7,6 +7,7 @@
         if(isset($_POST['passotp']))
         {
             $otp_verify = $_POST['otp'];
+            try{
     
                 //check for empty otp//
                 
@@ -25,6 +26,11 @@
                 {
                     echo "<div class='error_message'>Incorrect otp</div>";
                 }
+            }
+            catch(PDOException $e)
+            {
+                echo "ERROR: " . $e->getMessage();
+            }
         }
     
 

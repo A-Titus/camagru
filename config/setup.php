@@ -27,13 +27,15 @@
         email varchar(100),
         user_password varchar(100),
         verified boolean,
-        otp int(5))";
+        otp int(5),
+        reg_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP)";
     $conn->exec($sql);
 
     $sql = $conn->prepare("CREATE TABLE IF NOT EXISTS `images` (
         `img_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
           `image_name` varchar(255) NOT NULL,
-          `username` varchar(255) NOT NULL
+          `username` varchar(255) NOT NULL,
+          `uploaded_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
         )");
         //add column for image path
         //base64 encode

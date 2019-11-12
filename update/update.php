@@ -10,23 +10,41 @@
     if(isset($_POST['update_username']))
     {
         $username = $_POST['new_username'];
-        $statement = $conn->prepare("UPDATE `users` SET username = '$username' WHERE username = '$old_username'");
-        $statement->execute();
-        $_SESSION['username'] = $username;
+        try{
+            $statement = $conn->prepare("UPDATE `users` SET username = '$username' WHERE username = '$old_username'");
+            $statement->execute();
+            $_SESSION['username'] = $username;
+    }
+        catch(PDOException $e)
+        {
+            echo "ERROR: " . $e->getMessage();
+        }
     }
 
     if(isset($_POST['update_email']))
     {
         $email = $_POST['new_email'];
-        $statement = $conn->prepare("UPDATE `users` SET email = '$email' WHERE username = '$old_username'");
-        $statement->execute();
+        try{
+            $statement = $conn->prepare("UPDATE `users` SET email = '$email' WHERE username = '$old_username'");
+            $statement->execute();
+        }
+        catch(PDOException $e)
+        {
+            echo "ERROR: " . $e->getMessage();
+        }
     }
 
     if(isset($_POST['update_pass']))
     {
         $pass = $_POST['new_pass'];
-        $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
-        $statement = $conn->prepare("UPDATE `users` SET user_password = '$hashed_pass' WHERE username = '$old_username'");
-        $statement->execute();
+        try{
+            $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
+            $statement = $conn->prepare("UPDATE `users` SET user_password = '$hashed_pass' WHERE username = '$old_username'");
+            $statement->execute();
+        }
+        catch(PDOException $e)
+        {
+            echo "ERROR: " . $e->getMessage();
+        }
     }
 ?>
