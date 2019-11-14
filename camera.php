@@ -49,6 +49,11 @@
                     a.download = "image.png";
                     a.click(); //auto click virtual link when snap button is clicked
                     document.body.removeChild(a);//delete link
+                    ///////////////////////////////////////
+                    //////////////////////////////////////////
+
+
+
                     
                 });
             </script>

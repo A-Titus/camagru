@@ -34,6 +34,7 @@
     $sql = $conn->prepare("CREATE TABLE IF NOT EXISTS `images` (
         `img_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
           `image_name` varchar(255) NOT NULL,
+          `image_path` varchar(255) NOT NULL,
           `username` varchar(255) NOT NULL,
           `uploaded_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
         )");

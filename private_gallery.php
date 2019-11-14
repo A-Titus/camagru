@@ -1,45 +1,14 @@
 <?php
-    include_once 'config/database.php';
+    include_once ('config/database.php');
 
-     
-    // select the image 
-    $query = "SELECT * FROM images WHERE img_id = 1"; 
-    $stmt = $con->prepare( $query );
-     
-    // bind the id of the image you want to select
-    $stmt->bindParam(1, $_GET['img_id']);
-    $stmt->execute();
-     
-    // to verify if a record is found
-    $num = $stmt->rowCount();
-     
-    if( $num ){
-        // if found
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        // specify header with content type,
-        // you can do header("Content-type: image/jpg"); for jpg,
-        // header("Content-type: image/gif"); for gif, etc.
-        header("Content-type: image/png");
-        
-        //display the image data
-        print $row['data'];
-        exit;
-    }else{
-        //if no image found with the given id,
-        //load/query your default image here
-    }
+    echo "test";
+    $result = $conn->prepare("SELECT * FROM images");
+    $result->execute();
+
+    while ($data = $result->fetch(PDO::FETCH_ASSOC)){
+        // do something awesome with row
+      //  echo "<img src=".$data["image_name"].">";
+        echo "<h1>{$data['image_name']}</h1>";
+       echo "<img src='".$data['image_path']."' width='400px' height='400px'>";
+     } 
 ?>
-
-<html>
-    <head>
-        <title>PHP Tutorial</title>
-    </head>
-<body>
- 
-    <div>Here's the image from the database:</div>
- 
-    <!– "1" is the database id of the image to be selected –>
-    <img src=”private_gallery.php?img_id=1” />
-</body>
-</html>

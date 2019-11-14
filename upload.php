@@ -27,9 +27,9 @@ try{
            {
                $_SESSION["email"]= $email;
                $fileNameNew = uniqid('', true).".".$fileActualExt;
-               $fileDestination = 'img/'.$fileNameNew;
+               $fileDestination = 'images/'.$fileNameNew;
                move_uploaded_file($fileTmpName, $fileDestination);
-               $sql =$conn->prepare("INSERT INTO images (username, image_name) VALUES('$username','$fileName')");
+               $sql =$conn->prepare("INSERT INTO images (username, image_name, image_path) VALUES('$username','$fileName','$fileDestination')");//
                $sql->execute();
                header("Location: http://127.0.0.1:8080/camagru/private_gallery.php");
            }
