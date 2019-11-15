@@ -29,9 +29,9 @@ try{
                $fileNameNew = uniqid('', true).".".$fileActualExt;
                $fileDestination = 'images/'.$fileNameNew;
                move_uploaded_file($fileTmpName, $fileDestination);
-               $sql =$conn->prepare("INSERT INTO images (username, image_name, image_path) VALUES('$username','$fileName','$fileDestination')");//
+               $sql =$conn->prepare("INSERT INTO images (username, image_name, image_path, likedby) VALUES('$username','$fileName','$fileDestination','0')");
                $sql->execute();
-               header("Location: http://127.0.0.1:8080/camagru/private_gallery.php");
+               header("Location: http://127.0.0.1:8080/camagru/feed.php");
            }
            else
            {

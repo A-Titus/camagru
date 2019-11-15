@@ -38,12 +38,16 @@
                }
                else
                {
+                    $_SESSION['email'] = $email;
                     $hashed_pass = password_hash($pass1, PASSWORD_BCRYPT);
                     $otp = rand(10000, 99000);
                     $query = $conn->prepare("INSERT INTO users (username, email, user_password, verified, otp) VALUES ('$username', '$email', '$hashed_pass', '0', $otp)");
                     $query->execute();
+                    $message = "<p></br></br></br></p>
+                            <p>Your otp: $otp</p></br>
+                            <p><a href='http://localhost:8080/camagru/otp.php?link=$otp'>Click here</a></p>";
                     echo "<div class='success_message'>success</div>";
-                    send_mail($email, $otp);
+                    send_mail($email, $otp, $message);
                     echo "Thanks for registering! We have just sent you an email with your verification link.";
                     header("Location: http://localhost:8080/camagru/otp.php"); 
                 }
