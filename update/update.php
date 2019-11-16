@@ -11,9 +11,22 @@
     {
         $username = $_POST['new_username'];
         try{
+
+            $statement = $conn->prepare("SELECT * FROM users WHERE username = '$username'");
+             $statement->execute();
+            //$verif = $statement->fetchAll();
+               $count = $statement->rowCount();
+               if($count > 0)
+               {
+                   echo "<div class='error_message'>username already in use</div>";
+                   exit();
+               }
+               else{
+                   ////////////////
             $statement = $conn->prepare("UPDATE `users` SET username = '$username' WHERE username = '$old_username'");
             $statement->execute();
             $_SESSION['username'] = $username;
+               }
     }
         catch(PDOException $e)
         {
@@ -25,8 +38,35 @@
     {
         $email = $_POST['new_email'];
         try{
-            $statement = $conn->prepare("UPDATE `users` SET email = '$email' WHERE username = '$old_username'");
+
+            $statement = $conn->prepare("SELECT email FROM users WHERE email = '$email'");
             $statement->execute();
+           //$verif = $statement->fetchAll();
+              $count = $statement->rowCount();
+              if($count > 0)
+              {
+                  echo "<div class='error_message'>email already in use</div>";
+                  exit();
+              }
+              else{
+                  ///////////////////////////////////
+                  //set verified = to 0 and send new otp, then do verifcation
+                  $otp = rand(10000, 99000);
+                  $statement = $conn->prepare("UPDATE `users` SET email = '$email' WHERE username = '$old_username'");
+                  $statement->execute();
+                  $statement = $conn->prepare("UPDATE `users` SET otp = '$otp' WHERE email = '$email'");
+                 $statement->execute();
+                 $statement = $conn->prepare("UPDATE `users` SET verified = '0' WHERE email = '$email'");
+                 $statement->execute();
+
+                 $message = "<p></br></br></br></p>
+                 <p>Your otp: $otp</p></br>
+                 <p><a href='http://localhost:8080/camagru/otp.php?link=$otp'>Click here</a></p>";
+                    echo "<div class='success_message'>success</div>";
+                   // send_mail($email, $otp, $message); //fix mail function test to see if works
+                    echo "Your update request is been processed! We have just sent you an email with your verification link.";
+                    header("Location: http://localhost:8080/camagru/otp.php");// test out properly
+                        }
         }
         catch(PDOException $e)
         {
