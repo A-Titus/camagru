@@ -65,7 +65,7 @@ catch(PDOException $e)
    <body>
    <div class="topnav">
     <a href="feed.php">Feed</a>
-    <a href="camera.php">Snap</a>
+    <a href="snap.php">Snap</a>
     <a class="active" href="#">Upload</a>
     <a href="./update/profile.php">Profile</a>
     <a href="logout.php">Log out</a>

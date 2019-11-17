@@ -12,7 +12,14 @@
         $email = $_POST['r_email'];
         $pass1 = $_POST['r_pass'];
         $pass2 = $_POST['r_pass_conf'];
+        $uppercase = preg_match('@[A-Z]@', $pass1);
+        $lowercase = preg_match('@[a-z]@', $pass1);
+        $number    = preg_match('@[0-9]@', $pass1);
         try{
+        if(!$uppercase || !$lowercase || !$number || strlen($pass1) < 8) 
+        {
+            echo "<div class='error_message'>Password should consist of 8 characters containing an Uppercase letter, Lowercase letter and a number</div>";
+        }
         if($pass1 != $pass2)
         {
             echo "<div class='error_message'>Passwords dont match</div>";

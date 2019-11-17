@@ -59,5 +59,8 @@
             </script>
             </div>
         </body>
+        <footer>
+  <p>Copyright atitus</p>
+</footer>
     </head>
 </html>

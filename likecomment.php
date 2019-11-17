@@ -8,6 +8,7 @@
     
     $statement = $conn->prepare("INSERT INTO `likes` (img_id, likedby) VALUES('$img_id', '$username')");
     $statement->execute();
+    header("Location: http://localhost:8080/camagru/feed.php");
 
     
 

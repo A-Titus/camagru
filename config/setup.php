@@ -47,4 +47,13 @@
             `likedby` varchar(255) NOT NULL
             )");
             $sql->execute();
+
+            $sql = $conn->prepare("CREATE TABLE IF NOT EXISTS `comments` (
+                `id` INT(6) AUTO_INCREMENT PRIMARY KEY,
+                `img_id` int(11) NOT NULL ,
+                `comment` varchar(255) NOT NULL,
+                `user` varchar(255) NOT NULL
+
+                )");
+                $sql->execute();
     ?>

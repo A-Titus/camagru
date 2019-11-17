@@ -22,6 +22,9 @@
             </form>
         </div>
     </body>
+    <footer>
+  <p>Copyright atitus</p>
+</footer>
 </html>
 <!-- <?php
     // require_once 'config/setup.php';

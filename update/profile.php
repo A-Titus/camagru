@@ -17,7 +17,7 @@
     <body>
         <div class="topnav">
             <a href="../feed.php">Feed</a>
-            <a href="../camera.php">Snap</a>
+            <a href="../snap.php">Snap</a>
             <a href="../upload.php">upload</a>
             <a class="active" href="#">Profile</a>
             <a href="../logout.php">Log out</a>
@@ -47,4 +47,7 @@
 
         </div>
     </body>
+    <footer>
+  <p>Copyright atitus</p>
+</footer>
 </html>

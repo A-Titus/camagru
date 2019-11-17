@@ -19,7 +19,7 @@
 
 <div class="topnav">
   <a class="active" href="#">Feed</a>
-  <a href="camera.php">Snap</a>
+  <a href="snap.php">Snap</a>
   <a href="upload.php">Upload</a>
   <a href="./update/profile.php">Profile</a>
   <a href="logout.php">Log out</a>
@@ -53,9 +53,9 @@
         echo "
         </span></a>
             <div class='comment-container'>
-                <form action='comment.php' method='POST'>
+                <form action='sendcomment.php' method='POST'>
                 <input type ='text' name='comment' placeholder='comment'>
-                <a class='comment-post' href='comment.php?img_id=$imgid&username=$user'>comment<span class='like-coun'>
+                <a class='comment-post' name='comment' href='comment.php?img_id=$imgid&username=$user'>comment<span class='like-coun'>
                 </form>
             </div>
         </div>
@@ -72,4 +72,7 @@
 
 
 </body>
+<footer>
+  <p>Copyright atitus</p>
+</footer>
 </html>
