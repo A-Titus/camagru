@@ -5,6 +5,9 @@
         <title>camagru</title>
         <link rel="stylesheet" href="style.css">
         <h1>Camagru</h1>
+        <div class="topnav">
+            <a href="public_gallery.php">Gallery</a>
+        </div>
     </head>
     <body>
         <div class="signin">
@@ -26,6 +29,3 @@
   <p>Copyright atitus</p>
 </footer>
 </html>
-<!-- <?php
-    // require_once 'config/setup.php';
-?> -->
