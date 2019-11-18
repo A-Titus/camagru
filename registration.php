@@ -16,21 +16,19 @@
         $lowercase = preg_match('@[a-z]@', $pass1);
         $number    = preg_match('@[0-9]@', $pass1);
         try{
-        if(!$uppercase || !$lowercase || !$number || strlen($pass1) < 8) 
-        {
-            echo "<div class='error_message'>Password should consist of 8 characters containing an Uppercase letter, Lowercase letter and a number</div>";
-        }
-        if($pass1 != $pass2)
-        {
-            echo "<div class='error_message'>Passwords dont match</div>";
-            exit();
-        }
-
-
-       if(empty($username)  || empty($email) || empty($pass1) || empty($pass2))
-       {
-           echo "<div class='error_message'>Fields missing</div>";
-       }
+            if($pass1 != $pass2)
+            {
+                echo "<div class='error_message'>Passwords dont match</div>";
+                exit();
+            }
+            if(empty($username)  || empty($email) || empty($pass1) || empty($pass2))
+            {
+                echo "<div class='error_message'>Fields missing</div>";
+            }
+            if(!$uppercase || !$lowercase || !$number || strlen($pass1) < 8) 
+            {
+                echo "<div class='error_message'>Password should consist of 8 characters containing an Uppercase letter, Lowercase letter and a number</div>";
+            }
        else
        {
            

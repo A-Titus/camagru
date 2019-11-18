@@ -1,7 +1,8 @@
 <?php
     session_start();
 
-    include ("profile.php");
+    include("profile.php");
+    include("../sendmail.php");
     
     include_once "../config/database.php";
     //echo $_SESSION['username'];
@@ -26,6 +27,7 @@
             $statement = $conn->prepare("UPDATE `users` SET username = '$username' WHERE username = '$old_username'");
             $statement->execute();
             $_SESSION['username'] = $username;
+            echo "<div class='success_message'>Updated successfully</div>";
                }
     }
         catch(PDOException $e)
@@ -49,7 +51,6 @@
                   exit();
               }
               else{
-                  ///////////////////////////////////
                   //set verified = to 0 and send new otp, then do verifcation
                   $otp = rand(10000, 99000);
                   $statement = $conn->prepare("UPDATE `users` SET email = '$email' WHERE username = '$old_username'");
@@ -62,8 +63,8 @@
                  $message = "<p></br></br></br></p>
                  <p>Your otp: $otp</p></br>
                  <p><a href='http://localhost:8080/camagru/otp.php?link=$otp'>Click here</a></p>";
-                    echo "<div class='success_message'>success</div>";
-                   // send_mail($email, $otp, $message); //fix mail function test to see if works
+                 send_mail($email, $otp, $message);
+                 echo "<div class='success_message'>success</div>";
                     echo "Your update request is been processed! We have just sent you an email with your verification link.";
                     header("Location: http://localhost:8080/camagru/otp.php");// test out properly
                         }
@@ -77,10 +78,18 @@
     if(isset($_POST['update_pass']))
     {
         $pass = $_POST['new_pass'];
+        $uppercase = preg_match('@[A-Z]@', $pass);
+        $lowercase = preg_match('@[a-z]@', $pass);
+        $number    = preg_match('@[0-9]@', $pass);
         try{
+            if(!$uppercase || !$lowercase || !$number || strlen($pass) < 8) 
+            {
+                echo "<div class='error_message'>Password should consist of 8 characters containing an Uppercase letter, Lowercase letter and a number</div>";
+            }
             $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
             $statement = $conn->prepare("UPDATE `users` SET user_password = '$hashed_pass' WHERE username = '$old_username'");
             $statement->execute();
+            echo "<div class='success_message'>Updated successfully</div>";
         }
         catch(PDOException $e)
         {

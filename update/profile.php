@@ -31,17 +31,17 @@
         <input type ="text" style="width:240px; text-align: center; border: 1px solid white; border-bottom: 1px solid #fff; border-radius: 8px; font-family:'play', sans-serif; font-size: 16px; font-weight: 200px;
             padding: 10px 0; transition: border 0.5s; outline: none;  "name="new_username" placeholder="New Username">
 
-        <input type="submit" style="margin-left: 88px;" name="update_username" placeholder="Update Username" value="Update">
+        <input type="submit" style="text-align: center;" name="update_username" placeholder="Update Username" value="Update">
 
         <input type ="email" style="width:240px; text-align: center; border: 1px solid white; border-bottom: 1px solid #fff; border-radius: 8px; font-family:'play', sans-serif; font-size: 16px; font-weight: 200px;
             padding: 10px 0; transition: border 0.5s; outline: none; "name="new_email" placeholder="New Email">
 
-        <input type="submit" style="margin-left: 88px;" name="update_email" placeholder="Update Email" value="Update">
+        <input type="submit" style=" text-align: center" name="update_email" placeholder="Update Email" value="Update">
 
         <input type="password" style="width:240px; text-align: center; border: 1px solid white; border-bottom: 1px solid #fff; border-radius: 8px; font-family:'play', sans-serif; font-size: 16px; font-weight: 200px;
             padding: 10px 0; transition: border 0.5s; outline: none; "name="new_pass" placeholder="New Password">
 
-        <input type="submit"  style="margin-left: 88px;" name="update_pass" placeholder="Update Password" value="Update">
+        <input type="submit"  style="text-align: center" name="update_pass" placeholder="Update Password" value="Update">
                 <br>
     </form>
 

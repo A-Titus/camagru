@@ -36,7 +36,6 @@
           `image_name` varchar(255) NOT NULL,
           `image_path` varchar(255) NOT NULL,
           `username` varchar(255) NOT NULL,
-          `likedby` varchar(255) NOT NULL,
           `uploaded_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
         )");
         $sql->execute();

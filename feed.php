@@ -29,7 +29,7 @@
 <?php
     session_start();
     include_once ('config/database.php');
-    $result = $conn->prepare("SELECT * FROM images");
+    $result = $conn->prepare("SELECT * FROM images ORDER BY uploaded_date ASC");
     $result->execute();
     
     while ($data = $result->fetch(PDO::FETCH_ASSOC))
@@ -53,10 +53,14 @@
         echo "
         </span></a>
             <div class='comment-container'>
-                <form action='sendcomment.php' method='POST'>
+                <form action='comment.php?img_id=$imgid&username=$user' method='POST'>
                 <input type ='text' name='comment' placeholder='comment'>
-                <a class='comment-post' name='comment' href='comment.php?img_id=$imgid&username=$user'>comment<span class='like-coun'>
+                <input type ='submit' name='comment_button' class='comment-post' >comment<span>
                 </form>
+            </div>
+
+            <div class='delete-container'>
+                <a class='delete-post' name='delete' href='delete.php?img_id=$imgid&username=$user'>delete<span class='like-coun'>
             </div>
         </div>
     </div>

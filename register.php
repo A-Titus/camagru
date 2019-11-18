@@ -33,7 +33,7 @@
 
         </div>
     </body>
-    <footer>
+<footer>
   <p>Copyright atitus</p>
 </footer>
 </html>

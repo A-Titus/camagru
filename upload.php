@@ -29,23 +29,25 @@ try{
                $fileNameNew = uniqid('', true).".".$fileActualExt;
                $fileDestination = 'images/'.$fileNameNew;
                move_uploaded_file($fileTmpName, $fileDestination);
-               $sql =$conn->prepare("INSERT INTO images (username, image_name, image_path, likedby) VALUES('$username','$fileName','$fileDestination','0')");
+               $sql =$conn->prepare("INSERT INTO images (username, image_name, image_path) VALUES('$username','$fileName','$fileDestination')");
                $sql->execute();
-               header("Location: http://127.0.0.1:8080/camagru/feed.php");
+               echo "<div class='success_message'>uploaded successfully</div>";
+               //header("Location: http://127.0.0.1:8080/camagru/feed.php");
            }
            else
            {
-               echo "your file is too big!";
+            echo "<div class='error_message'>File too big</div>";
            }
        }
        else
        {
-           echo "There was an error uploading your file!";
+           
+           echo "<div class='error_message'>There was an error uploading your file!</div>";
        }
    }
    else
    {
-       echo "you cannot upload files of this type";
+    echo "<div class='error_message'>You cannot upload files of this type</div>";
    }
 }
 catch(PDOException $e)
@@ -57,6 +59,7 @@ catch(PDOException $e)
 <!DOCTYPE html>
 <html>
    <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
        <title>Upload</title>
        <link rel="stylesheet" href="feed.css">
 
