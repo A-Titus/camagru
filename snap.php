@@ -34,8 +34,11 @@
                 <input type="submit" class="" value="Save" id="save">
                 <p><canvas class="snap" name="image" id="canvas" width="500px" height="375px">Canvas Still Loading</canvas></p>
                 <canvas class="snap1" name="image1" id="canvas_stickers" width="50px" height="50px">Canvas Still Loading</canvas>
-                <img id="scream" width="100px" height="100px" src="stickers/smiley.jpg" alt="smiley">
                 <canvas name="image" id="player">Canvas still loading</canvas>
+                <div class="container2" style="display:inline-block; padding-right: 17%;">
+                    <button onclick="stickers('stickers/angrybird.png')" class="btn">sticker1</button>
+                    <button onclick="stickers('stickers/pizza.png')" class="btn">sticker2</button>
+                </div>
             </div>
     </div>
 <script type="text/javascript">
@@ -69,8 +72,49 @@
         xhttp.open("post", "cam.php",false);
         xhttp.send(image);
     })
+
+  
+        function setPicture(select){
+      var DD = document.getElementById('dropdown');
+      var value = DD.options[DD.selectedIndex].value;
+      img1.src = value;
+    }
+    function stickers(path) {
+       var sticker = new Image();
+       var width = video.offsetWidth, height = video.offsetHeight;
+       sticker.src = path;
+       if (canvas) {
+           contxt = canvas.getContext('2d');
+           contxt.drawImage(sticker, 0, 0, 200, 200);
+           pic.value = canvas.toDataURL('image/png');
+           if (!(document.getElementById("img"))) {
+               var elem = document.createElement("img");
+               elem.setAttribute("src", sticker.src);
+               document.getElementById("stickers").appendChild(elem);
+           }
+       }
+};
     
+
 </script>
+<?php
+include_once('config/database.php');
+session_start();
+$result = $conn->prepare("SELECT * FROM images order by img_id desc");
+    $result->execute();
+    
+    while ($data = $result->fetch(PDO::FETCH_ASSOC))
+    {
+        $imgUrl = $data['image_path'];
+        $imgid  = $data['img_id'];
+        $user  = $data['username'];
+        echo "
+        <div class ='image'>
+        <br>
+        <img widthclass='uploaded-post' src='$imgUrl' style='width:20% '/>;
+        <div>";
+    }
+?>
 </body>
 </html>
 

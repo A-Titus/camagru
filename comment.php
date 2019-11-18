@@ -27,7 +27,14 @@ $message = "<p>$who commented on your pic</p>
 <br>
 <br>
 comment: $comment";
-send_mail($posteremail, '0', $message);
+
+$query = $conn->prepare("SELECT notify FROM users WHERE username = '$username'");
+$query->execute();
+$notificationpref = $query->fetch();
+if($notificationpref['notify'] == 1)
+{
+    send_mail($posteremail, '0', $message);
+}
 echo "<div class='success_message'>success</div>";
 
 ?>

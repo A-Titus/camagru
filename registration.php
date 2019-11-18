@@ -46,7 +46,7 @@
                     $_SESSION['email'] = $email;
                     $hashed_pass = password_hash($pass1, PASSWORD_BCRYPT);
                     $otp = rand(10000, 99000);
-                    $query = $conn->prepare("INSERT INTO users (username, email, user_password, verified, otp) VALUES ('$username', '$email', '$hashed_pass', '0', $otp)");
+                    $query = $conn->prepare("INSERT INTO users (username, email, user_password, verified, otp, notify) VALUES ('$username', '$email', '$hashed_pass', '0', $otp, '1')");
                     $query->execute();
                     $message = "<p></br></br></br></p>
                             <p>Your otp: $otp</p></br>

@@ -96,4 +96,22 @@
             echo "ERROR: " . $e->getMessage();
         }
     }
+
+    if(isset($_POST['noti']))
+    {
+       if($_POST['notify'] == 'yes')
+       {
+        $statement = $conn->prepare("UPDATE `users` SET notify = '1' WHERE username = '$old_username'");
+        $statement->execute();
+        echo "<div class='success_message'>You will recieve notifications</div>";
+       }
+       else
+       {
+           $statement = $conn->prepare("UPDATE `users` SET notify = '0' WHERE username = '$old_username'");
+           $statement->execute();
+           echo "<div class='error_message'>You will not recieve notifications</div>";
+       }
+        
+    }
+
 ?>

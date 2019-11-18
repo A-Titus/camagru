@@ -22,11 +22,4 @@ else
 {
     echo "<div class='error_message'>you do not have permission to delete this pic</div>";
 }
-
-
-
-
-
-
-
 ?>

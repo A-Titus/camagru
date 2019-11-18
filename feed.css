@@ -113,3 +113,18 @@ span.like-count {
   padding: 10px;
   background-color: #96ff3382;
 }
+
+.delete-container{
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  background-color: #ddd;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #4588c9;
+  border-radius: 6px;
+  font-size: 14px;
+}
+

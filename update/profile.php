@@ -30,24 +30,33 @@
 
         <input type ="text" style="width:240px; text-align: center; border: 1px solid white; border-bottom: 1px solid #fff; border-radius: 8px; font-family:'play', sans-serif; font-size: 16px; font-weight: 200px;
             padding: 10px 0; transition: border 0.5s; outline: none;  "name="new_username" placeholder="New Username">
+            <br>
 
         <input type="submit" style="text-align: center;" name="update_username" placeholder="Update Username" value="Update">
+        <br>
 
         <input type ="email" style="width:240px; text-align: center; border: 1px solid white; border-bottom: 1px solid #fff; border-radius: 8px; font-family:'play', sans-serif; font-size: 16px; font-weight: 200px;
             padding: 10px 0; transition: border 0.5s; outline: none; "name="new_email" placeholder="New Email">
+            <br>
 
         <input type="submit" style=" text-align: center" name="update_email" placeholder="Update Email" value="Update">
+        <br>
 
         <input type="password" style="width:240px; text-align: center; border: 1px solid white; border-bottom: 1px solid #fff; border-radius: 8px; font-family:'play', sans-serif; font-size: 16px; font-weight: 200px;
             padding: 10px 0; transition: border 0.5s; outline: none; "name="new_pass" placeholder="New Password">
+            <br>
 
         <input type="submit"  style="text-align: center" name="update_pass" placeholder="Update Password" value="Update">
                 <br>
-    </form>
+                <br>
+                <input type="checkbox" name="notify" value="yes">Recieve Notifications? 
+        <br><br>
+        <input type="submit" name="noti">
+            </form>
 
         </div>
     </body>
     <footer>
-  <p>Copyright atitus</p>
+  <p> © Copyright atitus</p>
 </footer>
 </html>

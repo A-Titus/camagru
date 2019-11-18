@@ -29,7 +29,14 @@
 <?php
     session_start();
     include_once ('config/database.php');
-    $result = $conn->prepare("SELECT * FROM images ORDER BY uploaded_date ASC");
+    $offset = 0;
+    if(isset($_GET['offset'])){
+        $offset = $_GET['offset'];
+    }
+    if($offset < 0){
+        $offset = 0;
+    }
+    $result = $conn->prepare("SELECT * FROM images order by img_id desc LIMIT $offset, 5");
     $result->execute();
     
     while ($data = $result->fetch(PDO::FETCH_ASSOC))
@@ -60,23 +67,28 @@
             </div>
 
             <div class='delete-container'>
-                <a class='delete-post' name='delete' href='delete.php?img_id=$imgid&username=$user'>delete<span class='like-coun'>
+               <p> <a name='delete' href='delete.php?img_id=$imgid&username=$user'>delete<span class='like-coun'></p>
             </div>
         </div>
     </div>
         
         ";
     }
-
-
 ?>
 
 
 </div>
 
-
+<?php
+if($offset < 0 || ($offset - 5) < 0){
+    echo "<a href='?offset=0'> Prev</a>";
+}else{
+    echo "<a href='?offset=".($offset-5)."'>Prev</a>";
+}
+echo "<a href='?offset=".($offset+5)."'>  Next</a>";
+?>
 </body>
 <footer>
-  <p>Copyright atitus</p>
+  <p> © Copyright atitus</p>
 </footer>
 </html>

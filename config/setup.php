@@ -6,7 +6,7 @@
         try {
             $conn = new PDO("mysql:host=$servername", $root, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $conn->exec("CREATE DATABASE `$db`;");
+            $conn->exec("CREATE DATABASE IF NOT EXISTS `$db`;");
         } catch (PDOException $e) {
             die("DB ERROR: ". $e->getMessage());
         }
@@ -15,7 +15,6 @@
     try {
         $conn = new PDO("mysql:host=$servername;dbname=camagru", $root, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "connected successfully";
     }
     catch(PDOException $e)
     {
@@ -28,6 +27,7 @@
         user_password varchar(100),
         verified boolean,
         otp int(5),
+        notify boolean,
         reg_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP)";
     $conn->exec($sql);
 
